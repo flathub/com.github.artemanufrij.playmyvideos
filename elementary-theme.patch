@@ -1,0 +1,13 @@
+diff --git a/src/Application.vala b/src/Application.vala
+index 2a85587..460e2be 100644
+--- a/src/Application.vala
++++ b/src/Application.vala
+@@ -116,6 +116,8 @@ namespace PlayMyVideos {
+ 
+         protected override void activate () {
+             if (mainwindow == null) {
++                Gtk.Settings.get_default ().set_property ("gtk-theme-name", "elementary");
++                Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
+                 mainwindow = new MainWindow ();
+                 mainwindow.application = this;
+                 Interfaces.MediaKeyListener.listen ();
