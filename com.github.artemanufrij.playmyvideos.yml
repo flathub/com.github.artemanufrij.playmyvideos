@@ -1,9 +1,9 @@
 id: com.github.artemanufrij.playmyvideos
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: "3.32"
+runtime-version: "3.34"
 base: io.elementary.BaseApp
-base-version: juno
+base-version: 'juno-19.08'
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -17,12 +17,10 @@ finish-args:
   - --talk-name=org.gnome.SettingsDaemon.MediaKeys
   - --talk-name=org.mpris.MediaPlayer2
   - --talk-name=org.freedesktop.thumbnails.Thumbnailer1
-  - --filesystem=xdg-run/dconf
-  - --filesystem=xdg-config/dconf:ro
-  - --talk-name=ca.desrt.dconf
   - --filesystem=xdg-videos
   - --filesystem=/media
   - --filesystem=/run/media
+  - --metadata=X-DConf=migrate-path=/com/github/artemanufrij/playmyvideos/
 command: com.github.artemanufrij.playmyvideos
 cleanup:
   - "*.a"
@@ -46,8 +44,8 @@ modules:
       - --enable-encoder=png
     sources:
       - type: archive
-        url: "https://ffmpeg.org/releases/ffmpeg-3.4.5.tar.xz"
-        sha256: 741cbd6394eaed370774ca4cc089eaafbc54d0824b9aa360d4b3b0cbcbc4a92c
+        url: "https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz"
+        sha256: 023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5
     cleanup:
       - /share/ffmpeg/examples
 
@@ -55,8 +53,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.14.4.tar.xz"
-        sha256: dfd78591901df7853eab7e56a86c34a1b03635da0d3d56b89aa577f1897865da
+        url: "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.16.1.tar.xz"
+        sha256: e8a5748ae9a4a7be9696512182ea9ffa6efe0be9b7976916548e9d4381ca61c4
 
   - name: playmyvideos
     buildsystem: meson
