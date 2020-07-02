@@ -58,6 +58,8 @@ modules:
 
   - name: playmyvideos
     buildsystem: meson
+    post-install:
+      - install -Dm644 /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg  -t /app/share/icons/hicolor/128x128/apps/
     sources:
       - type: archive
         url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
