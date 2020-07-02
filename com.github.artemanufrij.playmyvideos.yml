@@ -1,7 +1,7 @@
 id: com.github.artemanufrij.playmyvideos
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: "3.34"
+runtime-version: "3.36"
 base: io.elementary.BaseApp
 base-version: 'juno-19.08'
 finish-args:
@@ -58,6 +58,8 @@ modules:
 
   - name: playmyvideos
     buildsystem: meson
+    post-install:
+      - install -Dm644 /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg  -t /app/share/icons/hicolor/128x128/apps/
     sources:
       - type: archive
         url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
