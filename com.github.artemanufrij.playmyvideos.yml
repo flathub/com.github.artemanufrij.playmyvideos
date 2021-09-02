@@ -22,40 +22,22 @@ finish-args:
   - --filesystem=/run/media
   - --metadata=X-DConf=migrate-path=/com/github/artemanufrij/playmyvideos/
 command: com.github.artemanufrij.playmyvideos
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    directory: lib/ffmpeg
+    add-ld-path: '.'
+    version: '20.08'
+    autodelete: false
 cleanup:
   - "*.a"
   - "*.la"
 cleanup-commands:
+  - mkdir -p /app/lib/ffmpeg
   - rm -rv /app/include
   - rm -rv /app/lib/pkgconfig
   - rm -rv /app/share/gir-1.0
   - rm -rv /app/share/vala*
 modules:
-
-  - name: ffmpeg
-    config-opts:
-      - --enable-shared
-      - --disable-static
-      - --enable-gnutls
-      - --disable-doc
-      - --disable-programs
-      - --disable-encoders
-      - --disable-muxers
-      - --enable-encoder=png
-    sources:
-      - type: archive
-        url: "https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz"
-        sha256: 023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5
-    cleanup:
-      - /share/ffmpeg/examples
-
-  - name: gst-libav
-    buildsystem: meson
-    sources:
-      - type: archive
-        url: "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.16.1.tar.xz"
-        sha256: e8a5748ae9a4a7be9696512182ea9ffa6efe0be9b7976916548e9d4381ca61c4
-
   - name: playmyvideos
     buildsystem: meson
     post-install:
