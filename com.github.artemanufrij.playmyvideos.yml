@@ -6,7 +6,7 @@ base: io.elementary.BaseApp
 base-version: 'juno-21.08'
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
   - --socket=pulseaudio
@@ -38,6 +38,8 @@ cleanup-commands:
   - rm -rv /app/share/gir-1.0
   - rm -rv /app/share/vala*
 modules:
+  - "shared-modules/clutter/clutter.json"
+
   - name: playmyvideos
     buildsystem: meson
     post-install:
