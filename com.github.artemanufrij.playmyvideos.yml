@@ -1,12 +1,12 @@
 id: com.github.artemanufrij.playmyvideos
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: '40'
+runtime-version: '42'
 base: io.elementary.BaseApp
-base-version: 'juno-20.08'
+base-version: 'juno-21.08'
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
   - --socket=pulseaudio
@@ -26,7 +26,7 @@ add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
     add-ld-path: '.'
-    version: '20.08'
+    version: '21.08'
     autodelete: false
 cleanup:
   - "*.a"
@@ -38,10 +38,12 @@ cleanup-commands:
   - rm -rv /app/share/gir-1.0
   - rm -rv /app/share/vala*
 modules:
+  - "shared-modules/clutter/clutter.json"
+
   - name: playmyvideos
     buildsystem: meson
     post-install:
-      - install -Dm644 /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg  -t /app/share/icons/hicolor/128x128/apps/
+      - install -Dm644 /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg  -t /app/share/icons/hicolor/scalable/apps/
     sources:
       - type: archive
         url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
