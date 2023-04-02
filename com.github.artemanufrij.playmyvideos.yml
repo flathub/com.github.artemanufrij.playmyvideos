@@ -1,9 +1,9 @@
 id: com.github.artemanufrij.playmyvideos
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: '42'
+runtime-version: '44'
 base: io.elementary.BaseApp
-base-version: 'juno-21.08'
+base-version: 'juno-22.08'
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -12,7 +12,6 @@ finish-args:
   - --socket=pulseaudio
   - --share=network
   - --env=GST_PLUGIN_PATH_1_0=/app/lib/gstreamer-1.0
-  - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.gnome.SettingsDaemon.MediaKeys
   - --talk-name=org.mpris.MediaPlayer2
@@ -26,7 +25,7 @@ add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
     add-ld-path: '.'
-    version: '21.08'
+    version: '22.08'
     autodelete: false
 cleanup:
   - "*.a"
@@ -39,6 +38,7 @@ cleanup-commands:
   - rm -rv /app/share/vala*
 modules:
   - "shared-modules/clutter/clutter.json"
+  - "shared-modules/libsoup/libsoup-2.4.json"
 
   - name: playmyvideos
     buildsystem: meson
