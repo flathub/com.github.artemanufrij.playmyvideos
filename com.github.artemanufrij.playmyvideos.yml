@@ -38,6 +38,7 @@ cleanup-commands:
   - rm -rv /app/share/vala*
 modules:
   - "shared-modules/clutter/clutter.json"
+  - "shared-modules/libsoup/libsoup-2.4.json"
 
   - name: playmyvideos
     buildsystem: meson
