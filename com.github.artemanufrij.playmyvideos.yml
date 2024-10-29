@@ -49,6 +49,6 @@ modules:
         url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
         sha256: 3693045cf3d4071400edcec1c6b827e185bf54a3cd135188cbbb756fca7ecb5a
       - type: patch
-        path: 0001-Remove-duplicated-release.patch
+        path: fix-appdata.patch
       - type: patch
         path: elementary-theme.patch
