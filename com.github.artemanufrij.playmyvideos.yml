@@ -43,7 +43,8 @@ modules:
   - name: playmyvideos
     buildsystem: meson
     post-install:
-      - install -Dm644 /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg  -t /app/share/icons/hicolor/scalable/apps/
+      - mkdir -p /app/share/icons/hicolor/scalable/apps && mv /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete
     sources:
       - type: archive
         url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
@@ -52,3 +53,4 @@ modules:
         path: fix-appdata.patch
       - type: patch
         path: elementary-theme.patch
+
