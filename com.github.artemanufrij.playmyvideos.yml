@@ -13,7 +13,6 @@ finish-args:
   - --share=network
   - --env=GST_PLUGIN_PATH_1_0=/app/lib/gstreamer-1.0
   - --talk-name=org.freedesktop.ScreenSaver
-  - --talk-name=org.gnome.SettingsDaemon.MediaKeys
   - --talk-name=org.mpris.MediaPlayer2
   - --talk-name=org.freedesktop.thumbnails.Thumbnailer1
   - --filesystem=xdg-videos
