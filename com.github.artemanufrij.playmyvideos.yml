@@ -1,8 +1,8 @@
 id: com.github.artemanufrij.playmyvideos
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 base: io.elementary.BaseApp
-base-version: 'circe-24.08'
+base-version: 'circe-25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.vala
@@ -38,7 +38,6 @@ modules:
   - "shared-modules/clutter/clutter.json"
   - "shared-modules/libsoup/libsoup-2.4.json"
   - name: libgee
-    build-options:
     make-install-args:
       - girdir=/app/share/gir-1.0
       - typelibdir=/app/lib/girepository-1.0
