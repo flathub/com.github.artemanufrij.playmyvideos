@@ -1,9 +1,14 @@
 id: com.github.artemanufrij.playmyvideos
-sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 base: io.elementary.BaseApp
-base-version: 'juno-23.08'
+base-version: 'circe-25.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.vala
+build-options:
+  prepend-path: /usr/lib/sdk/vala/bin/
+  prepend-ld-library-path: /usr/lib/sdk/vala/lib
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -20,36 +25,30 @@ finish-args:
   - --filesystem=/run/media
   - --metadata=X-DConf=migrate-path=/com/github/artemanufrij/playmyvideos/
 command: com.github.artemanufrij.playmyvideos
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: '.'
-    version: '23.08'
-    autodelete: false
 cleanup:
   - "*.a"
   - "*.la"
 cleanup-commands:
-  - mkdir -p /app/lib/ffmpeg
-  - rm -rv /app/include
-  - rm -rv /app/lib/pkgconfig
-  - rm -rv /app/share/gir-1.0
-  - rm -rv /app/share/vala*
+  - rm -rf /app/include
+  - rm -rf /app/lib/girepository-1.0
+  - rm -rf /app/lib/pkgconfig
+  - rm -rf /app/share/gir-1.0
+  - rm -rf /app/share/vala
 modules:
-  - "shared-modules/clutter/clutter.json"
-  - "shared-modules/libsoup/libsoup-2.4.json"
+  - shared-modules/clutter/clutter.json
+  - shared-modules/libsoup/libsoup-2.4.json
 
   - name: playmyvideos
     buildsystem: meson
     post-install:
-      - mkdir -p /app/share/icons/hicolor/scalable/apps && mv /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - mkdir -p /app/share/icons/hicolor/scalable/apps
+      - mv /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete
     sources:
       - type: archive
-        url: "https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz"
+        url: https://github.com/artemanufrij/playmyvideos/archive/1.1.2.tar.gz
         sha256: 3693045cf3d4071400edcec1c6b827e185bf54a3cd135188cbbb756fca7ecb5a
       - type: patch
         path: fix-appdata.patch
       - type: patch
         path: elementary-theme.patch
-
