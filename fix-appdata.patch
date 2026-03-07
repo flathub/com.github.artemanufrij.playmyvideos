@@ -1,20 +1,34 @@
-From e74e4ce6a578a2d9ba2899bc147ae6da56d8f1f7 Mon Sep 17 00:00:00 2001
+From ace392f56d4344c9652c71cfc95623d853d74621 Mon Sep 17 00:00:00 2001
 From: Sabri Ünal <yakushabb@gmail.com>
-Date: Tue, 29 Oct 2024 23:03:16 +0300
+Date: Sat, 20 Dec 2025 01:54:45 +0300
 Subject: [PATCH] Fix appdata papercuts
 
 ---
- data/com.github.artemanufrij.playmyvideos.appdata.xml.in | 36 +++---------------------------------
- 1 file changed, 3 insertions(+), 33 deletions(-)
+ data/com.github.artemanufrij.playmyvideos.appdata.xml.in | 51 ++++++++++-----------------------------------------
+ 1 file changed, 10 insertions(+), 41 deletions(-)
 
 diff --git a/data/com.github.artemanufrij.playmyvideos.appdata.xml.in b/data/com.github.artemanufrij.playmyvideos.appdata.xml.in
-index a7edb02..3ef019e 100644
+index a7edb02..b2b7e96 100644
 --- a/data/com.github.artemanufrij.playmyvideos.appdata.xml.in
 +++ b/data/com.github.artemanufrij.playmyvideos.appdata.xml.in
-@@ -25,8 +25,10 @@
+@@ -15,18 +15,19 @@
+             <li>'TheMovieDB.org' integration for fetching covers</li>
+         </ul>
+     </description>
+-    <categories>
+-        <category>Video</category>
+-    </categories>
+     <custom>
+         <value key="x-appcenter-color-primary">#202020</value>
+         <value key="x-appcenter-color-primary-text">rgb(255,255,255)</value>
+         <value key="x-appcenter-suggested-price">2</value>
      </custom>
-     <developer_name>Artem Anufrij</developer_name>
-     <url type="homepage">http://anufrij.org/cinema/</url>
+-    <developer_name>Artem Anufrij</developer_name>
+-    <url type="homepage">http://anufrij.org/cinema/</url>
++    <developer id="org.anufrij">
++        <name>Artem Anufrij</name>
++    </developer>
++    <url type="homepage">https://anufrij.org/cinema/</url>
 +    <url type="vcs-browser">https://github.com/artemanufrij/playmyvideos</url>
      <url type="bugtracker">https://github.com/artemanufrij/playmyvideos/issues</url>
      <url type="help">https://github.com/artemanufrij/playmyvideos/issues</url>
@@ -22,7 +36,22 @@ index a7edb02..3ef019e 100644
      <update_contact>artem.anufrij@live.de</update_contact>
      <screenshots>
          <screenshot type="default">
-@@ -194,10 +196,6 @@
+@@ -59,12 +60,12 @@
+         </release>
+         <release version="1.1.0" date="2018-07-24">
+             <description>
+-                Prepare for JUNO
++                <p>Prepare for JUNO</p>
+             </description>
+         </release>
+         <release version="1.0.0" date="2018-04-10">
+             <description>
+-                Switch to Meson
++                <p>Switch to Meson</p>
+                 <p>Translation:</p>
+                 <ul>
+                     <li>German</li>
+@@ -194,10 +195,6 @@
                  <ul>
                      <li>null handler exception if audio stream hasn't a value</li>
                  </ul>
@@ -33,7 +62,16 @@ index a7edb02..3ef019e 100644
                  <p>New:</p>
                  <ul>
                      <li>Save/restore window position</li>
-@@ -323,33 +321,5 @@
+@@ -247,7 +244,7 @@
+         </release>
+         <release version="0.1.7" date="2017-12-04">
+             <description>
+-                This patch includes small UI improvements.
++                <p>This patch includes small UI improvements.</p>
+                 <p>Fix:</p>
+                 <ul>
+                     <li>Playing episodes</li>
+@@ -323,33 +320,5 @@
              </description>
          </release>
      </releases>
