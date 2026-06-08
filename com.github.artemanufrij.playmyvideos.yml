@@ -28,8 +28,12 @@ command: com.github.artemanufrij.playmyvideos
 cleanup:
   - "*.a"
   - "*.la"
+# A temporary solution until circe-26.08
 cleanup-commands:
+  - rm -rf /app//bin/sassc
   - rm -rf /app/include
+  - rm -rf /app/lib/libportal*
+  - rm -rf /app/lib/libsass*
   - rm -rf /app/lib/girepository-1.0
   - rm -rf /app/lib/pkgconfig
   - rm -rf /app/share/gir-1.0
@@ -42,7 +46,7 @@ modules:
     buildsystem: meson
     post-install:
       - mkdir -p /app/share/icons/hicolor/scalable/apps
-      - mv /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - mv /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/
       - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete
     sources:
       - type: archive
