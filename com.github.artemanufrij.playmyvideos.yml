@@ -1,8 +1,8 @@
 id: com.github.artemanufrij.playmyvideos
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 base: io.elementary.BaseApp
-base-version: 'circe-25.08'
+base-version: tanit-26.08
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.vala
@@ -26,21 +26,19 @@ finish-args:
   - --metadata=X-DConf=migrate-path=/com/github/artemanufrij/playmyvideos/
 command: com.github.artemanufrij.playmyvideos
 cleanup:
-  - "*.a"
   - "*.la"
-# A temporary solution until circe-26.08
 cleanup-commands:
-  - rm -rf /app//bin/sassc
-  - rm -rf /app/include
-  - rm -rf /app/lib/libportal*
-  - rm -rf /app/lib/libsass*
-  - rm -rf /app/lib/girepository-1.0
-  - rm -rf /app/lib/pkgconfig
-  - rm -rf /app/share/gir-1.0
-  - rm -rf /app/share/vala
+  - /app/cleanup-BaseApp.sh
 modules:
   - shared-modules/clutter/clutter.json
   - shared-modules/libsoup/libsoup-2.4.json
+
+  # Required by the playmyvideos. The base app no longer provides it.
+  - name: libgee
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libgee/0.20/libgee-0.20.8.tar.xz
+        sha256: 189815ac143d89867193b0c52b7dc31f3aa108a15f04d6b5dca2b6adfad0b0ee
 
   - name: playmyvideos
     buildsystem: meson
